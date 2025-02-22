@@ -6,6 +6,7 @@ const mongodb = require("mongodb");
 const mongoose = require("mongoose");
 const validateUrl = require("url-validator");
 const shortid = require("shortid");
+const path = require('path');
 
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -30,10 +31,10 @@ app.use(
   })
 );
 
-app.use("/public", express.static(`${process.cwd()}/public`));
+app.use("/public", express.static(path.join(__dirname, "..","public")));
 
 app.get("/", function (req, res) {
-  res.sendFile(process.cwd() + "/views/index.html");
+  res.sendFile(path.join(__dirname, "..", "views", "index.html"));
 });
 
 app.post("/api/shorturl", async function (req, res) {
@@ -91,3 +92,5 @@ const port = process.env.PORT || 3000;
 app.listen(port, function () {
   console.log(`Listening on port ${port}`);
 });
+
+module.exports = app;

@@ -11,4 +11,4 @@
 
 :link:Link:
 
-- https://url-shortener-ufa0.onrender.com
+- https://url-shortener-nine-iota.vercel.app/
